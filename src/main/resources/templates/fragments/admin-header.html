@@ -1,0 +1,6 @@
+<!DOCTYPE html><html lang="es" xmlns:th="http://www.thymeleaf.org"><body>
+<header class="admin-header" th:fragment="header">
+ <a class="admin-brand" th:href="@{/admin}"><img th:src="@{/images/logo.svg}" alt=""><span>SHOT<em>OYAMA</em><small>Panel de administración</small></span></a>
+ <nav><a th:href="@{/}" target="_blank">Ver web ↗</a><form th:action="@{/admin/logout}" method="post"><button>Cerrar sesión</button></form></nav>
+</header>
+</body></html>

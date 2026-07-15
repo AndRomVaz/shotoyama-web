@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="es" xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Club Deportivo Shotoyama de Karate: calendario, horarios, actividades, noticias y contacto.">
+<title>Club Deportivo Shotoyama | Karate, educación y valores</title>
+<link rel="icon" th:href="@{/images/favicon.svg}" type="image/svg+xml"><link rel="stylesheet" th:href="@{/css/site.css}">
+</head><body>
+<div th:replace="~{fragments/header :: header(${pagina})}"></div><main>
+<section class="hero"><div class="container hero-grid">
+ <div class="hero-copy"><span class="eyebrow">Club deportivo · Shotokan · Sevilla</span><h1>Más que karate.<br><em>Una forma de crecer.</em></h1><p>Formación, competición, compañerismo y valores para todas las edades.</p>
+  <div class="buttons"><a class="btn primary" th:href="@{/horarios}">Consulta los horarios</a><a class="btn outline" th:href="@{/contacto}">Prueba una clase</a></div>
+  <div class="stats"><div><strong>1992</strong><span>Origen de la escuela</span></div><div><strong>4</strong><span>Localidades</span></div><div><strong>1</strong><span>Gran familia</span></div></div>
+ </div>
+ <div class="hero-art"><div class="yellow-disc"></div><img th:src="@{/images/karateka.svg}" alt="Karateka realizando una técnica"><div class="respect"><b>礼</b><span><strong>Respeto</strong><small>La base del camino</small></span></div></div>
+</div></section>
+<section class="quick container">
+ <a th:href="@{/calendario}"><b>▦</b><span><strong>Calendario</strong><small>Próximas citas</small></span></a>
+ <a th:href="@{/horarios}"><b>◷</b><span><strong>Horarios</strong><small>Encuentra tu grupo</small></span></a>
+ <a th:href="@{/actividades}"><b>拳</b><span><strong>Actividades</strong><small>Descubre el club</small></span></a>
+ <a th:href="@{/noticias}"><b>◆</b><span><strong>Noticias</strong><small>Actualidad Shotoyama</small></span></a>
+ <a th:href="@{/contacto}"><b>⌖</b><span><strong>Contacto</strong><small>Estamos cerca</small></span></a>
+</section>
+<section class="section dark"><div class="container"><div class="section-title"><div><span class="eyebrow">Agenda del club</span><h2>Lo próximo en Shotoyama</h2></div><a th:href="@{/calendario}">Calendario completo →</a></div>
+ <div class="agenda-layout"><div class="event-list"><p th:if="${#lists.isEmpty(eventos)}">No hay eventos publicados.</p><article th:each="e:${eventos}"><div class="event-date"><strong th:text="${@formato.diaMes(e.inicio)}">17 jul</strong><span th:text="${@formato.hora(e.inicio)}">18:00</span></div><div><small class="tag" th:text="${e.tipo}">CLUB</small><h3 th:text="${e.titulo}">Evento</h3><p th:text="${e.ubicacion}">Lugar</p></div></article></div>
+ <a class="calendar-callout" th:href="@{/calendario}"><div class="calendar-icon">15</div><span>Entrenamientos, campeonatos y actividades</span><strong>Abrir calendario →</strong></a></div>
+</div></section>
+<section class="section container"><div class="section-title"><div><span class="eyebrow">Actualidad</span><h2>Últimas noticias</h2></div><a th:href="@{/noticias}">Todas las noticias →</a></div>
+ <div class="news-grid"><article class="news-card" th:each="n,st:${noticias}" th:classappend="${st.index == 0} ? ' featured' : ''"><div class="news-image"><img th:if="${n.imagenUrl!=null and !n.imagenUrl.isBlank()}" th:src="${n.imagenUrl}" alt=""><span>SHOT<em>OYAMA</em></span></div><div class="news-body"><time th:text="${@formato.fecha(n.fechaPublicacion)}">Fecha</time><h3 th:text="${n.titulo}">Título</h3><p th:text="${n.resumen}">Resumen</p><a th:href="@{/noticias/{id}(id=${n.id})}">Leer noticia →</a></div></article></div>
+</section>
+<section class="section values"><div class="container values-grid"><div><span class="eyebrow">Nuestro dojo</span><h2>El karate que deja huella</h2><p>La competición importa, pero la educación, el respeto y el crecimiento personal son el verdadero resultado.</p></div><div class="value-list"><article><b>礼</b><h3>Respeto</h3><p>Por compañeros, rivales y técnicos.</p></article><article><b>忍</b><h3>Constancia</h3><p>Repetir, corregir y continuar.</p></article><article><b>和</b><h3>Comunidad</h3><p>Un club unido a sus familias.</p></article></div></div></section>
+<section class="cta"><div class="container"><div><span class="eyebrow">Empieza tu camino</span><h2>Tu primera clase puede ser hoy.</h2><p>Te ayudaremos a encontrar el grupo adecuado.</p></div><a class="btn black" th:href="@{/contacto}">Contactar con el club</a></div></section>
+</main><div th:replace="~{fragments/footer :: footer}"></div></body></html>

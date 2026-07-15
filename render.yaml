@@ -1,0 +1,33 @@
+databases:
+  - name: shotoyama-db
+    plan: free
+    region: frankfurt
+    databaseName: shotoyama
+    user: shotoyama
+services:
+  - type: web
+    name: shotoyama-karate
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DB_HOST
+        fromDatabase: {name: shotoyama-db, property: host}
+      - key: DB_PORT
+        fromDatabase: {name: shotoyama-db, property: port}
+      - key: DB_NAME
+        fromDatabase: {name: shotoyama-db, property: database}
+      - key: DB_USER
+        fromDatabase: {name: shotoyama-db, property: user}
+      - key: DB_PASSWORD
+        fromDatabase: {name: shotoyama-db, property: password}
+      - key: GOOGLE_CALENDAR_EMBED_URL
+        sync: false

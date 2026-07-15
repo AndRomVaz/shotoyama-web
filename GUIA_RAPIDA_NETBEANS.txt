@@ -1,0 +1,23 @@
+CLUB DEPORTIVO SHOTOYAMA — GUÍA RÁPIDA
+
+1. Descomprime el ZIP.
+2. Abre NetBeans.
+3. File > Open Project.
+4. Selecciona la carpeta shotoyama-web, donde está pom.xml.
+5. Ejecuta ShotoyamaWebApplication.java.
+
+WEB LOCAL
+http://localhost:8080
+
+ADMINISTRACIÓN
+http://localhost:8080/admin
+Usuario: admin
+Contraseña inicial: CambiarShotoyama2026!
+
+URL PÚBLICA PROPUESTA TRAS DESPLEGAR EN RENDER
+https://shotoyama-karate.onrender.com
+
+Esa URL no estará activa hasta subir el proyecto a GitHub/GitLab y conectarlo a una cuenta de Render.
+
+NOTA DE DESPLIEGUE
+La base de datos gratuita incluida para la demostración en Render caduca a los 30 días. Para una web oficial permanente, usa una base PostgreSQL de pago o externa y compra/conecta el dominio elegido.
